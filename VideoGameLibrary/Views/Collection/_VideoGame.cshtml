@@ -9,15 +9,27 @@
 else
 {
     <div class="videogame-container">
-        <img src="@Model.ImgSrc" placeholder="@Model.Title" title="@Model.Title"/>
         <div class="videogame-info">
             <div class="text-center">
                 <h3>@Model.Title</h3>
                 <p>@Model.Year</p>
             </div>
-            <p>@Model.Genre</p>
-            <p>@Model.Platform</p>
-            <p>@Model.EsrbRating</p>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Genre:</td>
+                        <td>@Model.Genre</td>
+                    </tr>
+                    <tr>
+                        <td>Platform:</td>
+                        <td>@Model.Platform</td>
+                    </tr>
+                    <tr>
+                        <td>Rating:</td>
+                        <td>@Model.EsrbRating</td>
+                    </tr>
+                </tbody>
+            </table>
             @if(!string.IsNullOrEmpty(Model.LoanDate) && !string.IsNullOrEmpty(Model.LoanedTo))
             {
                 <div class="loan-section">
@@ -26,5 +38,6 @@ else
                 </div>
             }
         </div>
+        <img draggable="false" src="@Model.ImgSrc" placeholder="@Model.Title" />
     </div>
 }

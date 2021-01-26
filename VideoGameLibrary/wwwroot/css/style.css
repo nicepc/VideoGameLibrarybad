@@ -1,13 +1,15 @@
 ﻿body {
+    background-color:#282828;
 }
 
 .videogame-collection {
     display:flex;
     flex-wrap:wrap;
-    justify-content:space-between;
+    justify-content:space-around;
 }
 .videogame-container {
-    margin-top:2em;
+    color:white;
+    margin: 1em 0.5em;
     height:400px;
     width:275px;
     overflow:hidden;
@@ -15,6 +17,10 @@
 }
 
 .videogame-container > img {
+    z-index:-1;
+    user-select:none;
+    opacity:1;
+    cursor:pointer;
     position:absolute;
     transform: translate(-50%, -50%);
     top: 50%;
@@ -23,6 +29,29 @@
     min-height: 100%;
     height: auto;
     width: auto;
-    max-height: none;
-    max-width: none;
+    transition: opacity 0.25s ease;
+}
+.videogame-info {
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    padding:1em;
+}
+.videogame-info > table {
+    margin:0 auto;
+}
+.videogame-info > table td {
+    padding-top:0.65em;
+}
+.videogame-info > table td:first-child {
+    text-align:right;
+    width:50%;
+    padding-right:0.75em;
+    box-sizing:border-box;
+    vertical-align:top;
+}
+.videogame-container:hover > img {
+    opacity: 0.1;
+}
+.videogame-container:hover > .videogame-info {
+    opacity: 1;
 }

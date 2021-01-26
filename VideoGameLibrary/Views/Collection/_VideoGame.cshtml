@@ -1,0 +1,30 @@
+﻿@model VideoGame 
+@{
+}
+
+@if (Model == null)
+{
+    <h1>No Game Provided</h1>
+}
+else
+{
+    <div class="videogame-container">
+        <img src="@Model.ImgSrc" placeholder="@Model.Title" title="@Model.Title"/>
+        <div class="videogame-info">
+            <div class="text-center">
+                <h3>@Model.Title</h3>
+                <p>@Model.Year</p>
+            </div>
+            <p>@Model.Genre</p>
+            <p>@Model.Platform</p>
+            <p>@Model.EsrbRating</p>
+            @if(!string.IsNullOrEmpty(Model.LoanDate) && !string.IsNullOrEmpty(Model.LoanedTo))
+            {
+                <div class="loan-section">
+                    <p>@Model.LoanedTo</p>
+                    <p>@Model.LoanDate</p>
+                </div>
+            }
+        </div>
+    </div>
+}

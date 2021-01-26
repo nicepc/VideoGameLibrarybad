@@ -19,6 +19,16 @@ namespace VideoGameLibrary.Models
 
 
         public VideoGame() {}
+        public VideoGame(string imgSrc, string title, string genre, int year, string esrbRating, string platform)
+        {
+            ImgSrc = imgSrc;
+            Title = title;
+            Genre = genre;
+            Year = year;
+            EsrbRating = esrbRating;
+            Platform = platform;
+  
+        }
         public VideoGame(string imgSrc, string title, string genre, int year, string esrbRating, string platform, string loanedTo, string loanDate) 
         {
             ImgSrc = imgSrc;

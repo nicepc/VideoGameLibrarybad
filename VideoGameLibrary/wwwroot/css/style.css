@@ -1,0 +1,28 @@
+﻿body {
+}
+
+.videogame-collection {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+}
+.videogame-container {
+    margin-top:2em;
+    height:400px;
+    width:275px;
+    overflow:hidden;
+    position:relative;
+}
+
+.videogame-container > img {
+    position:absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    width: auto;
+    max-height: none;
+    max-width: none;
+}

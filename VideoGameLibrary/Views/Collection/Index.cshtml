@@ -1,3 +1,18 @@
-﻿@{
+﻿@model IEnumerable<VideoGame>
+@{
     ViewData["Title"] = "Game Collection";
 }
+
+<div class="videogame-collection">
+    @if (Model == null)
+    {
+        <h1>No Games Provided</h1>
+    }
+    else
+    {
+        foreach (var videogame in Model)
+        {
+            <partial name="_VideoGame.cshtml" for="@videogame" />
+        }
+    }
+</div>

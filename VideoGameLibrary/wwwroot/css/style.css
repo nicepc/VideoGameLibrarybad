@@ -1,6 +1,41 @@
 ﻿body {
-    background-color:#282828;
+    background-color: #23272a;
+    color: #fff;
 }
+
+/*====================
+        Nav
+======================*/
+.navbar {
+    display: flex;
+    background-color: #2c2f33;
+    padding: 0;
+}
+
+.nav-link {
+    color: white !important;
+    padding: 0.85em !important;
+    display: block;
+    background: linear-gradient(to bottom, #2c2f33, #2c2f33, #6a2bfc, #3d16ed);
+    background-size: 100% 300%;
+    transition: background-position 0.4s ease;
+}
+
+@media all and (min-width:576px) {
+    .nav-link:hover {
+        color: white;
+        background-position: 100% 80%;
+    }
+}
+
+/*====================
+        Footer
+======================*/
+
+footer {
+    background-color: #2c2f33;
+}
+
 
 .videogame-collection {
     display:flex;
@@ -38,6 +73,7 @@
 }
 .videogame-info > table {
     margin:0 auto;
+    width: 90%;
 }
 .videogame-info > table td {
     padding-top:0.65em;
@@ -55,3 +91,6 @@
 .videogame-container:hover > .videogame-info {
     opacity: 1;
 }
+
+
+

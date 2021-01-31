@@ -7,7 +7,7 @@ namespace VideoGameLibrary.Models
 {
     public class VideoGame
     {
-
+        public int ID { get; set; }
         public string ImgSrc { get; set; }
         public string Title { get; set; }
         public string Genre { get; set; }
@@ -19,8 +19,9 @@ namespace VideoGameLibrary.Models
 
 
         public VideoGame() {}
-        public VideoGame(string imgSrc, string title, string genre, int year, string esrbRating, string platform)
+        public VideoGame(int id, string imgSrc, string title, string genre, int year, string esrbRating, string platform)
         {
+            ID = id;
             ImgSrc = imgSrc;
             Title = title;
             Genre = genre;
@@ -29,8 +30,9 @@ namespace VideoGameLibrary.Models
             Platform = platform;
   
         }
-        public VideoGame(string imgSrc, string title, string genre, int year, string esrbRating, string platform, string loanedTo, DateTime loanDate) 
+        public VideoGame(int id, string imgSrc, string title, string genre, int year, string esrbRating, string platform, string loanedTo, DateTime loanDate) 
         {
+            ID = id;
             ImgSrc = imgSrc;
             Title = title;
             Genre = genre;

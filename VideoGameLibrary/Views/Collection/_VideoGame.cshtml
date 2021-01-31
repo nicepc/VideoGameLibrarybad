@@ -8,7 +8,8 @@
 }
 else
 {
-    <div class="videogame-container">
+    
+    <div class='@( (Model.LoanDate != null && !string.IsNullOrEmpty(Model.LoanedTo)) ? "videogame-container rented" : "videogame-container")' >
         <div class="videogame-info">
             <div class="text-center">
                 <h3>@Model.Title</h3>
@@ -31,17 +32,23 @@ else
                     </tbody>
                 </table>
             </div>
-            @if(Model.LoanDate != null && !string.IsNullOrEmpty(Model.LoanedTo))
-            {
-                <div class="loan-section">
+            <div class="loan-section">
+                @if (Model.LoanDate != null && !string.IsNullOrEmpty(Model.LoanedTo))
+                {
+
                     <h5>Loaned By:</h5>
                     <div>
                         <p>@Model.LoanedTo</p>
                         <p>@Model.LoanDate.ToShortDateString()</p>
                     </div>
-                </div>
-            }
+
+                }
+                else
+                {
+                    <button class="btn btn-purple btn-center" data-toggle="modal" data-target="#rentModal" data-game="@Model.Title" data-gameID="@Model.ID">Rent Game</button>
+                }
+            </div>
         </div>
-        <img draggable="false" src="@Model.ImgSrc" placeholder="@Model.Title" />
-    </div>
+    <img draggable="false" src="@Model.ImgSrc" placeholder="@Model.Title" />
+</div>
 }

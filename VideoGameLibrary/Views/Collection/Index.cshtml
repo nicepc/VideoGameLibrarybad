@@ -18,4 +18,31 @@
             }
         }
     </div>
+
+
+    <div class="modal fade" id="rentModal" tabindex="-1" aria-labelledby="rentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rentModalLabel">Rent A Game</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <h5 class="modal-game-title"></h5>
+                        <p>Please enter your name to rent this game:</p>
+                        <input type="hidden" name="gameID" id="gameID"/>
+                        <input type="text" id="renterName" name="renterName" placeholder="Name" />
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-purple">Rent</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

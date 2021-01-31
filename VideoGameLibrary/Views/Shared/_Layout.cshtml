@@ -3,12 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - VideoGameLibrary</title>
+    <title>@ViewData["Title"]</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/style.css" />
+    <link href="~/img/logo.svg" rel="icon" type="image/svg"/>
 </head>
 <body>
     <header>
@@ -38,7 +39,8 @@
 
     <footer class="footer text-muted text-center box-shadow">
         <div class="container">
-            &copy; 2021 - Ascension
+            <p>&copy; @DateTime.Now.Year - Ascension</p>
+            <p>Ryan Unroe - ryanunroe@gmail.com</p>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

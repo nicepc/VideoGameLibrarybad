@@ -14,6 +14,13 @@ h2 {
     font-size:2.5rem;
     margin-bottom:1.5rem;
 }
+
+.link {
+    color: #8a57ff;
+}
+.link:hover {
+    color: #7b45f7;
+}
 /*====================
         Nav
 ======================*/
@@ -31,12 +38,13 @@ h2 {
 }
 
 nav img {
-    width:25%;
+    width:40%;
 }
 
-.navbar-brand {
-    width:initial;
+a.navbar-brand {
+    width:3em;
     margin-right:0;
+    text-align:left;
 }
 /*====================
         Footer

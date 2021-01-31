@@ -11,7 +11,7 @@ namespace VideoGameLibrary.Controllers
     {
         private static List<VideoGame> videoGameCollection = new List<VideoGame>
         {
-            new VideoGame("/img/bioshock1.jpg", "Bioshock", "Action, Horror", 2007, "M", "Steam"),
+            new VideoGame("/img/bioshock1.jpg", "Bioshock", "Action, Horror", 2007, "M", "Steam", "Ryan", new DateTime(2021, 1, 28)),
             new VideoGame("/img/bioshock2.jpg", "Bioshock 2", "Action, Horror", 2010, "M", "Steam"),
             new VideoGame("/img/bioshockInfinite.jpg", "Bioshock Infinite", "Action", 2013, "M", "Steam"),
             new VideoGame("/img/littleNightmares1.jpg", "Little Nightmares", "Horror", 2017, "T", "Steam"),

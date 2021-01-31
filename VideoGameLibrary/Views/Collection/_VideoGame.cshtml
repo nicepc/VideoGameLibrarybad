@@ -13,28 +13,32 @@ else
             <div class="text-center">
                 <h3>@Model.Title</h3>
                 <p>@Model.Year</p>
+
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Genre:</td>
+                            <td>@Model.Genre</td>
+                        </tr>
+                        <tr>
+                            <td>Platform:</td>
+                            <td>@Model.Platform</td>
+                        </tr>
+                        <tr>
+                            <td>Rating:</td>
+                            <td>@Model.EsrbRating</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>Genre:</td>
-                        <td>@Model.Genre</td>
-                    </tr>
-                    <tr>
-                        <td>Platform:</td>
-                        <td>@Model.Platform</td>
-                    </tr>
-                    <tr>
-                        <td>Rating:</td>
-                        <td>@Model.EsrbRating</td>
-                    </tr>
-                </tbody>
-            </table>
-            @if(!string.IsNullOrEmpty(Model.LoanDate) && !string.IsNullOrEmpty(Model.LoanedTo))
+            @if(Model.LoanDate != null && !string.IsNullOrEmpty(Model.LoanedTo))
             {
                 <div class="loan-section">
-                    <p>@Model.LoanedTo</p>
-                    <p>@Model.LoanDate</p>
+                    <h5>Loaned By:</h5>
+                    <div>
+                        <p>@Model.LoanedTo</p>
+                        <p>@Model.LoanDate.ToShortDateString()</p>
+                    </div>
                 </div>
             }
         </div>

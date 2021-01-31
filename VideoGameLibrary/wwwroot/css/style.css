@@ -71,9 +71,17 @@ footer {
     border: 4px solid #0000;
     border-image-slice: 1;
 }
-.videogame-container.rented {
+.videogame-container.rented > img {
     opacity: 0.6;
     filter: grayscale(0.9);
+}
+
+.videogame-container.rented h3, .videogame-container.rented h5, .videogame-container.rented p, .videogame-container.rented td {
+    color:#aaa;
+}
+
+.videogame-container.rented:hover {
+    border-image-source: linear-gradient(to bottom right, #67568f, #453a78);
 }
 
 .videogame-container:hover {
@@ -162,15 +170,20 @@ footer {
     color:#ccc;
 }
 
+.link-purple {
+    margin-top:0.5em;
+    width: 6em;
+}
+
+
+
 
 /*====================
         Modal
 ======================*/
-
 .modal-footer {
-    display:flex;
-    justify-content:space-between;
-
+    display: flex;
+    justify-content: space-between;
 }
 
 .modal {

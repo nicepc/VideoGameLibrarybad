@@ -41,6 +41,7 @@ else
                         <p>@Model.LoanedTo</p>
                         <p>@Model.LoanDate.ToShortDateString()</p>
                     </div>
+                    <a class="btn btn-purple btn-center link-purple" asp-controller="Collection" asp-action="ReturnGame" asp-route-gameID="@Model.ID">Return</a>
 
                 }
                 else

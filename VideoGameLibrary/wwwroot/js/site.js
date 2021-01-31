@@ -5,7 +5,10 @@
 $('#rentModal').on('show.bs.modal', event => {
     let button = $(event.relatedTarget); // Button that triggered the modal
     let game = button.data('game'); // Extract info from data-* attributes
+    console.log(button.data);
     console.log(game);
+    console.log(button.data('gameid'));
     $('.modal-game-title').text(game);
-    $('.gameID').val(button.data('gameID'));
+    $('#gameid').val(button.data('gameid'));
 });
+

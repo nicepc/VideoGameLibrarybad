@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VideoGameLibrary.Data;
+using VideoGameLibrary.Interfaces;
 using VideoGameLibrary.Models;
 
 namespace VideoGameLibrary.Controllers
@@ -10,14 +12,21 @@ namespace VideoGameLibrary.Controllers
     public class CollectionController : Controller
     {
         
+        IDataAccessLayer dataAccessLayer;
+
+        public CollectionController(IDataAccessLayer dal)
+        {
+            dataAccessLayer = dal;
+        }
+
         public IActionResult Index()
         {
-            return View(videoGameCollection);
+            return View(dataAccessLayer.GetCollection());
         }
 
         public IActionResult ReturnGame(int gameID)
         {
-            VideoGame game = videoGameCollection.Find(vg => vg.ID == gameID);
+            VideoGame game = ((List<VideoGame>)dataAccessLayer.GetCollection()).Find(vg => vg.ID == gameID);
             game.LoanedTo = null;
             return Redirect("~/Collection/Index");
         }
@@ -28,7 +37,7 @@ namespace VideoGameLibrary.Controllers
             Console.WriteLine(Request.Form["gameid"]);
             
             int gameID = int.Parse(Request.Form["gameid"]);
-            VideoGame game = videoGameCollection.Find(vg => vg.ID == gameID);
+            VideoGame game = ((List<VideoGame>)dataAccessLayer.GetCollection()).Find(vg => vg.ID == gameID);
             string loanedTo = Request.Form["renterName"].ToString();
             game.LoanedTo = loanedTo;
             game.LoanDate = DateTime.Now;

@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VideoGameLibrary.Data;
+using VideoGameLibrary.Interfaces;
 
 namespace VideoGameLibrary
 {
@@ -24,6 +26,7 @@ namespace VideoGameLibrary
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddTransient<IDataAccessLayer, MockVideoGameDB>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

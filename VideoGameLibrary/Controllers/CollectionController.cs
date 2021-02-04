@@ -44,5 +44,27 @@ namespace VideoGameLibrary.Controllers
 
             return Redirect("~/Collection/Index");
         }
+
+
+        [HttpPost]
+        public IActionResult DeleteGame()
+        {
+            var gameList = (List<VideoGame>)dataAccessLayer.GetCollection();
+            int gameID = int.Parse(Request.Form["gameid"]);
+            for (int i = 0; i < gameList.Count(); i++)
+            {
+                if(gameList[i].ID == gameID)
+                {
+                    dataAccessLayer.DeleteGame(i);
+                    //Console.WriteLine("Delete id " + gameList[i].Title + " at position " + i );
+                    break;
+                }
+            }
+            return Redirect("~/Collection/Index");
+
+        }
+
+
+
     }
 }

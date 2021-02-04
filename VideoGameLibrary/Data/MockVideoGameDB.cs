@@ -35,7 +35,7 @@ namespace VideoGameLibrary.Data
 
         public bool DeleteGame(int index)
         {
-            if(index <= 0 && index < videoGameCollection.Count())
+            if(index >= 0 && index < videoGameCollection.Count())
             {
                 videoGameCollection.RemoveAt(index);
                 return true;

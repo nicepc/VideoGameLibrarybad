@@ -11,6 +11,7 @@ else
     
     <div class='@( (Model.LoanDate != null && !string.IsNullOrEmpty(Model.LoanedTo)) ? "videogame-container rented" : "videogame-container")' >
         <div class="videogame-info">
+            <div class="close-btn" data-toggle="modal" data-target="#deleteModal" data-game="@Model.Title" data-gameID="@Model.ID">&#10005;</div>
             <div class="text-center">
                 <h3>@Model.Title</h3>
                 <p>@Model.Year</p>

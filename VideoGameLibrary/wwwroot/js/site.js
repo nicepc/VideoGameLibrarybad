@@ -5,10 +5,15 @@
 $('#rentModal').on('show.bs.modal', event => {
     let button = $(event.relatedTarget); // Button that triggered the modal
     let game = button.data('game'); // Extract info from data-* attributes
-    console.log(button.data);
-    console.log(game);
-    console.log(button.data('gameid'));
     $('.modal-game-title').text(game);
-    $('#gameid').val(button.data('gameid'));
+    $('#gameidRent').val(button.data('gameid'));
+});
+
+
+$('#deleteModal').on('show.bs.modal', event => {
+    let button = $(event.relatedTarget); // Button that triggered the modal
+    let game = button.data('game'); // Extract info from data-* attributes
+    $('#deleteModalLabel').text("Delete Game: " + game );
+    $('#gameidDelete').val(button.data('gameid'));
 });
 

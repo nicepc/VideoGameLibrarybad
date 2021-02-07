@@ -17,3 +17,13 @@ $('#deleteModal').on('show.bs.modal', event => {
     $('#gameidDelete').val(button.data('gameid'));
 });
 
+
+$('.dropdown-toggle').on('click', event => {
+    $(this).next().toggle();
+});
+
+$('.dropdown-menu.keep-open').on('click', event => {
+    event.stopPropagation();
+});
+
+

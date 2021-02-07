@@ -6,8 +6,8 @@
 <div>
     <h2 class="text-center">Collection (@Model.Count())</h2>
 
-    <section class="filter-section row justify-content-center">
-            <input type="text" id="titleFilterInput" placeholder="Search by Title" />
+    <form class="filter-section row justify-content-center" asp-controller="Collection" asp-action="Index" method="post">
+            <input type="text" id="titleFilterInput" placeholder="Search by Title"  name="titleFilterInput"/>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdownMenu" data-bs-toggle="dropdown"  aria-expanded="false">
                     <img src="~/img/gear.svg"/>
@@ -16,28 +16,28 @@
                     <div class="mb-3">
                         <label for="filterRating" class="form-label">ESRB Rating</label>
                         <div class="btn-group" role="group" aria-label="Basic radio toggle button group" id="filterRating">
-                            <input type="radio" class="btn-check" name="btnradioRating" id="btnradioRating1" autocomplete="off" checked>
+                            <input type="radio" class="btn-check" name="btnradioRating" value="" id="btnradioRating1" autocomplete="off" checked>
                             <label class="btn btn-outline-purple" for="btnradioRating1">All</label>
 
-                            <input type="radio" class="btn-check" name="btnradioRating" id="btnradioRating2" autocomplete="off">
+                            <input type="radio" class="btn-check" name="btnradioRating" value="E" id="btnradioRating2" autocomplete="off">
                             <label class="btn btn-outline-purple" for="btnradioRating2">E</label>
 
-                            <input type="radio" class="btn-check" name="btnradioRating" id="btnradioRating3" autocomplete="off">
+                            <input type="radio" class="btn-check" name="btnradioRating" value="T" id="btnradioRating3" autocomplete="off">
                             <label class="btn btn-outline-purple" for="btnradioRating3">T</label>
 
-                            <input type="radio" class="btn-check" name="btnradioRating" id="btnradioRating4" autocomplete="off">
+                            <input type="radio" class="btn-check" name="btnradioRating" value="M" id="btnradioRating4" autocomplete="off">
                             <label class="btn btn-outline-purple" for="btnradioRating4">M</label>
 
-                            <input type="radio" class="btn-check" name="btnradioRating" id="btnradioRating5" autocomplete="off">
+                            <input type="radio" class="btn-check" name="btnradioRating" value="A" id="btnradioRating5" autocomplete="off">
                             <label class="btn btn-outline-purple" for="btnradioRating5">A</label>
 
-                            <input type="radio" class="btn-check" name="btnradioRating" id="btnradioRating6" autocomplete="off">
+                            <input type="radio" class="btn-check" name="btnradioRating" value="RP" id="btnradioRating6" autocomplete="off">
                             <label class="btn btn-outline-purple" for="btnradioRating6">RP</label>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="filterPlatform" class="form-label">Platform</label>
-                        <input list="platforms" id="filterPlatform">
+                        <input list="platforms" id="filterPlatform" name="filterPlatform">
                         <datalist id="platforms">
                             <option value="Nintendo Switch" />
                             <option value="Nintendo Wii" />
@@ -52,7 +52,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="filterGenre" class="form-label">Genre</label>
-                        <input list="genres" id="filterGenre">
+                        <input list="genres" id="filterGenre" name="filterGenre">
                         <datalist id="genres">
                             <option value="Action" />
                             <option value="Adventure" />
@@ -66,10 +66,10 @@
                     </div>
                 </div>
             </div>
-        <button class="btn btn-purple" id="searchBtn">Search</button>
+        <button class="btn btn-purple" id="searchBtn" type="submit">Search</button>
 
 
-    </section>
+    </form>
 
     <div class="videogame-collection">
         @if (Model == null)

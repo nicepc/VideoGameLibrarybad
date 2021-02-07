@@ -73,6 +73,10 @@ namespace VideoGameLibrary.Data
 
         public IEnumerable<VideoGame> SearchForGames(string key)
         {
+            if(key == null)
+            {
+                return videoGameCollection;
+            }
             List<VideoGame> retCollection = new List<VideoGame>();
             foreach(VideoGame game in videoGameCollection)
             {

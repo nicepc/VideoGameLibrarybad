@@ -19,9 +19,31 @@ namespace VideoGameLibrary.Controllers
             dataAccessLayer = dal;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View(dataAccessLayer.GetCollection());
+        }
+        [HttpPost]
+        public IActionResult Index(string titleFilterInput, string btnradioRating, string filterPlatform, string filterGenre)
+        {
+            Console.WriteLine($"{titleFilterInput}, {btnradioRating}, {filterPlatform}, {filterGenre}");
+            var filterCollection = dataAccessLayer.FilterCollection(filterGenre, filterPlatform, btnradioRating);
+            var searchCollection = dataAccessLayer.SearchForGames(titleFilterInput);
+            List<VideoGame> finalCollection = new List<VideoGame>();
+            foreach(VideoGame searchResult in searchCollection)
+            {
+                foreach(VideoGame filterResult in filterCollection)
+                {
+                    if (searchResult == filterResult)
+                    {
+                        finalCollection.Add(filterResult);
+                        break;
+                    }
+                }
+            }
+
+            return View(finalCollection);
         }
 
         public IActionResult ReturnGame(int gameID)

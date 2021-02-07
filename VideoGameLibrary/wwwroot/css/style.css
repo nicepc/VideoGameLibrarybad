@@ -65,7 +65,7 @@ footer {
 .videogame-collection {
     display:flex;
     flex-wrap:wrap;
-    justify-content:space-around;
+    justify-content:space-between;
     max-width:950px;
     margin:0 auto;
 }

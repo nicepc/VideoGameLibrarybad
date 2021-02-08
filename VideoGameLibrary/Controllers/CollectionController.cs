@@ -94,17 +94,21 @@ namespace VideoGameLibrary.Controllers
         [HttpPost]
         public IActionResult AddGame(VideoGame game)
         {
-            if(game.ID == -1)
+            if (ModelState.IsValid)
             {
-                int greatestIDValue = 0;
-                foreach (var videoGame in dataAccessLayer.GetCollection())
+                if (game.ID == -1)
                 {
-                    if (videoGame.ID > greatestIDValue) greatestIDValue = videoGame.ID;
+                    int greatestIDValue = 0;
+                    foreach (var videoGame in dataAccessLayer.GetCollection())
+                    {
+                        if (videoGame.ID > greatestIDValue) greatestIDValue = videoGame.ID;
+                    }
+                    game.ID = greatestIDValue + 1;
                 }
-                game.ID = greatestIDValue + 1;
+                dataAccessLayer.AddGame(game);
+                return Redirect("~/Collection/Index");
             }
-            dataAccessLayer.AddGame(game);
-            return Redirect("~/Collection/Index");
+            return View("GameForm");
         }
 
 

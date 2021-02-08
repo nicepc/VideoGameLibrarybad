@@ -19,7 +19,7 @@ namespace VideoGameLibrary.Models
         public string Genre { get; set; }
 
         [Required(ErrorMessage = "Year cannot be empty")]
-        public int Year { get; set; }
+        public int? Year { get; set; }
 
         [Required(ErrorMessage = "Rating cannot be empty")]
         public string EsrbRating { get; set; }

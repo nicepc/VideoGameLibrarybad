@@ -21,6 +21,14 @@ h2 {
 .link:hover {
     color: #7b45f7;
 }
+
+.err-msg {
+    color:#fc584c; 
+}
+
+.form-select {
+    margin-bottom:1em;
+}
 /*====================
         Nav
 ======================*/
@@ -168,6 +176,10 @@ footer {
 .header-div {
     position:relative;
 }
+#addGameForm {
+    margin:0 auto;
+    max-width:500px;
+}
 /*====================
        Filter
 ======================*/
@@ -182,6 +194,8 @@ footer {
 /*====================
        Buttons
 ======================*/
+
+
 #searchBtn {
     display:block;
     width:6em;

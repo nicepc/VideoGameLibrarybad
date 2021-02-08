@@ -4,24 +4,28 @@
 
 
 <div>
-    <h2>Add Movie</h2>
-    <form asp-controller="Collection" asp-action="AddMovie" method="post">
+    <h2>Add Video Game</h2>
+    <form asp-controller="Collection" asp-action="AddGame" method="post" id="addGameForm">
         <input value="-1" asp-for="ID" type="hidden" />
         <div class="form-group">
             <label for="Title">Title:</label>
             <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="err-msg"></span>
         </div>
         <div class="form-group">
-            <label for="ImgSrc">Image:</label>
+            <label for="ImgSrc">External Image Link:</label>
             <input asp-for="ImgSrc" class="form-control" />
+            <span asp-validation-for="ImgSrc" class="err-msg"></span>
         </div>
         <div class="form-group">
             <label for="Year">Year:</label>
             <input asp-for="Year" class="form-control" />
+            <span asp-validation-for="Year" class="err-msg"></span>
         </div>
         <div class="form-group">
             <label for="Genre">Genre:</label>
             <input asp-for="Genre" class="form-control" />
+            <span asp-validation-for="Genre" class="err-msg"></span>
         </div>
         <div class="form-group">
             <label for="EsrbRating">ESRB Rating:</label>
@@ -47,6 +51,6 @@
                 <option value="Xbox 1">Xbox 1</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-purple">Add Game</button>
+        <button type="submit" class="btn btn-purple btn-center">Add Game</button>
     </form>
 </div>

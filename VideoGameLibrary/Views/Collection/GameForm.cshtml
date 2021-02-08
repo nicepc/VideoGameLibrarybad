@@ -1,0 +1,52 @@
+﻿@model VideoGame
+@{
+}
+
+
+<div>
+    <h2>Add Movie</h2>
+    <form asp-controller="Collection" asp-action="AddMovie" method="post">
+        <input value="-1" asp-for="ID" type="hidden" />
+        <div class="form-group">
+            <label for="Title">Title:</label>
+            <input asp-for="Title" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="ImgSrc">Image:</label>
+            <input asp-for="ImgSrc" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="Year">Year:</label>
+            <input asp-for="Year" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="Genre">Genre:</label>
+            <input asp-for="Genre" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="EsrbRating">ESRB Rating:</label>
+            <select asp-for="EsrbRating" class="form-select">
+                <option value="E">E</option>
+                <option value="T">T</option>
+                <option value="M">M</option>
+                <option value="A">A</option>
+                <option value="RP">RP</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Platform">Platform:</label>
+            <select asp-for="Platform" class="form-select">
+                <option value="Nintendo Switch">Nintendo Switch</option>
+                <option value="Nintendo Wii">Nintendo Wii</option>
+                <option value="Playstation 2">Playstation 2</option>
+                <option value="Playstation 3">Playstation 3</option>
+                <option value="Playstation 4">Playstation 4</option>
+                <option value="Playstation 5">Playstation 5</option>
+                <option value="Steam">Steam</option>
+                <option value="Xbox 360">Xbox 360</option>
+                <option value="Xbox 1">Xbox 1</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-purple">Add Game</button>
+    </form>
+</div>

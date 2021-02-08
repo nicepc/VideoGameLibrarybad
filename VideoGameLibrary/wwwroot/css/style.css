@@ -165,12 +165,14 @@ footer {
     margin:0;
 }
 
+.header-div {
+    position:relative;
+}
 /*====================
        Filter
 ======================*/
-
-.filter-section > input{
-    max-width:15em;
+.filter-section > input {
+    max-width: 15em;
 }
 .filter-section > div {
     width:initial;
@@ -183,6 +185,12 @@ footer {
 #searchBtn {
     display:block;
     width:6em;
+}
+
+#addGameBtn {
+    position:absolute;
+    right:0.5em;
+    top:0.5em;
 }
 
 
@@ -258,6 +266,11 @@ footer {
       Responsive
 ======================*/
 
+@media all and (max-width:770px) {
+    .videogame-collection {
+        justify-content:space-around;
+    }
+}
 @media all and (min-width:576px) {
     .nav-link:hover {
         color: white;

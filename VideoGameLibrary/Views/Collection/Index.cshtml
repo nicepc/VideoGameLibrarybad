@@ -4,7 +4,10 @@
 }
 
 <div>
-    <h2 class="text-center">Collection (@Model.Count())</h2>
+    <div class="header-div">
+        <h2 class="text-center">Collection (@Model.Count())</h2>
+        <button class="btn btn-purple" id="addGameBtn" onclick="location.href='@Url.Action("GameForm","Collection")'">+</button>
+    </div>
 
     <form class="filter-section row justify-content-center" asp-controller="Collection" asp-action="Index" method="post">
             <input type="text" id="titleFilterInput" placeholder="Search by Title"  name="titleFilterInput"/>

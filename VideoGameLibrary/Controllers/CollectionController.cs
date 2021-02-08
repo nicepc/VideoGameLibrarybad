@@ -86,6 +86,27 @@ namespace VideoGameLibrary.Controllers
 
         }
 
+        public IActionResult GameForm()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddGame(VideoGame game)
+        {
+            if(game.ID == -1)
+            {
+                int greatestIDValue = 0;
+                foreach (var videoGame in dataAccessLayer.GetCollection())
+                {
+                    if (videoGame.ID > greatestIDValue) greatestIDValue = videoGame.ID;
+                }
+                game.ID = greatestIDValue + 1;
+            }
+            dataAccessLayer.AddGame(game);
+            return Redirect("~/Collection/Index");
+        }
+
 
 
     }

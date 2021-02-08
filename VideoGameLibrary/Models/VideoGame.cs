@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
 namespace VideoGameLibrary.Models
@@ -8,11 +9,22 @@ namespace VideoGameLibrary.Models
     public class VideoGame
     {
         public int ID { get; set; }
+        [Required(ErrorMessage = "Image source cannot be empty")]
         public string ImgSrc { get; set; }
+
+        [Required(ErrorMessage = "Title cannot be empty")]
         public string Title { get; set; }
+
+        [Required(ErrorMessage = "Genre cannot be empty")]
         public string Genre { get; set; }
+
+        [Required(ErrorMessage = "Year cannot be empty")]
         public int Year { get; set; }
+
+        [Required(ErrorMessage = "Rating cannot be empty")]
         public string EsrbRating { get; set; }
+
+        [Required(ErrorMessage = "Platform cannot be empty")]
         public string Platform { get; set; }
         public string LoanedTo { get; set; }
         public DateTime LoanDate { get; set; }

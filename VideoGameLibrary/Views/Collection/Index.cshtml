@@ -3,74 +3,74 @@
     ViewData["Title"] = "Game Collection";
 }
 
-<div>
+<div class="collection-body">
     <div class="header-div">
         <h2 class="text-center">Collection (@Model.Count())</h2>
         <button class="btn btn-purple" id="addGameBtn" onclick="location.href='@Url.Action("GameForm","Collection")'">+</button>
     </div>
 
     <form class="filter-section row justify-content-center" asp-controller="Collection" asp-action="Index" method="post">
-            <input type="text" id="titleFilterInput" placeholder="Search by Title"  name="titleFilterInput"/>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdownMenu" data-bs-toggle="dropdown"  aria-expanded="false">
-                    <img src="~/img/gear.svg"/>
-                </button>
-                <div class="dropdown-menu keep-open p-4" id="filterMenu" aria-labelledby="filterDropdownMenu">
-                    <div class="mb-3">
-                        <label for="filterRating" class="form-label">ESRB Rating</label>
-                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group" id="filterRating">
-                            <input type="radio" class="btn-check" name="btnradioRating" value="" id="btnradioRating1" autocomplete="off" checked>
-                            <label class="btn btn-outline-purple" for="btnradioRating1">All</label>
+        <input type="text" id="titleFilterInput" placeholder="Search by Title" name="titleFilterInput" />
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdownMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="~/img/gear.svg" />
+            </button>
+            <div class="dropdown-menu keep-open p-4" id="filterMenu" aria-labelledby="filterDropdownMenu">
+                <div class="mb-3">
+                    <label for="filterRating" class="form-label">ESRB Rating</label>
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group" id="filterRating">
+                        <input type="radio" class="btn-check" name="btnradioRating" value="" id="btnradioRating1" autocomplete="off" checked>
+                        <label class="btn btn-outline-purple" for="btnradioRating1">All</label>
 
-                            <input type="radio" class="btn-check" name="btnradioRating" value="E" id="btnradioRating2" autocomplete="off">
-                            <label class="btn btn-outline-purple" for="btnradioRating2">E</label>
+                        <input type="radio" class="btn-check" name="btnradioRating" value="E" id="btnradioRating2" autocomplete="off">
+                        <label class="btn btn-outline-purple" for="btnradioRating2">E</label>
 
-                            <input type="radio" class="btn-check" name="btnradioRating" value="T" id="btnradioRating3" autocomplete="off">
-                            <label class="btn btn-outline-purple" for="btnradioRating3">T</label>
+                        <input type="radio" class="btn-check" name="btnradioRating" value="T" id="btnradioRating3" autocomplete="off">
+                        <label class="btn btn-outline-purple" for="btnradioRating3">T</label>
 
-                            <input type="radio" class="btn-check" name="btnradioRating" value="M" id="btnradioRating4" autocomplete="off">
-                            <label class="btn btn-outline-purple" for="btnradioRating4">M</label>
+                        <input type="radio" class="btn-check" name="btnradioRating" value="M" id="btnradioRating4" autocomplete="off">
+                        <label class="btn btn-outline-purple" for="btnradioRating4">M</label>
 
-                            <input type="radio" class="btn-check" name="btnradioRating" value="A" id="btnradioRating5" autocomplete="off">
-                            <label class="btn btn-outline-purple" for="btnradioRating5">A</label>
+                        <input type="radio" class="btn-check" name="btnradioRating" value="A" id="btnradioRating5" autocomplete="off">
+                        <label class="btn btn-outline-purple" for="btnradioRating5">A</label>
 
-                            <input type="radio" class="btn-check" name="btnradioRating" value="RP" id="btnradioRating6" autocomplete="off">
-                            <label class="btn btn-outline-purple" for="btnradioRating6">RP</label>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="filterPlatform" class="form-label">Platform</label>
-                        <input list="platforms" id="filterPlatform" name="filterPlatform">
-                        <datalist id="platforms">
-                            <option value="Nintendo Switch" />
-                            <option value="Nintendo Wii" />
-                            <option value="Playstation 2" />
-                            <option value="Playstation 3" />
-                            <option value="Playstation 4" />
-                            <option value="Playstation 5" />
-                            <option value="Steam" />
-                            <option value="Xbox 360" />
-                            <option value="Xbox 1" />
-                        </datalist>
-                    </div>
-                    <div class="mb-3">
-                        <label for="filterGenre" class="form-label">Genre</label>
-                        <input list="genres" id="filterGenre" name="filterGenre">
-                        <datalist id="genres">
-                            <option value="Action" />
-                            <option value="Adventure" />
-                            <option value="FPS" />
-                            <option value="Puzzle" />
-                            <option value="Platformer" />
-                            <option value="Indie" />
-                            <option value="Roguelike" />
-                            <option value="Horror" />
-                        </datalist>
+                        <input type="radio" class="btn-check" name="btnradioRating" value="RP" id="btnradioRating6" autocomplete="off">
+                        <label class="btn btn-outline-purple" for="btnradioRating6">RP</label>
                     </div>
                 </div>
+                <div class="mb-3">
+                    <label for="filterPlatform" class="form-label">Platform</label>
+                    <input list="platforms" id="filterPlatform" name="filterPlatform">
+                    <datalist id="platforms">
+                        <option value="Nintendo Switch" />
+                        <option value="Nintendo Wii" />
+                        <option value="Playstation 2" />
+                        <option value="Playstation 3" />
+                        <option value="Playstation 4" />
+                        <option value="Playstation 5" />
+                        <option value="Steam" />
+                        <option value="Xbox 360" />
+                        <option value="Xbox 1" />
+                    </datalist>
+                </div>
+                <div class="mb-3">
+                    <label for="filterGenre" class="form-label">Genre</label>
+                    <input list="genres" id="filterGenre" name="filterGenre">
+                    <datalist id="genres">
+                        <option value="Action" />
+                        <option value="Adventure" />
+                        <option value="FPS" />
+                        <option value="Puzzle" />
+                        <option value="Platformer" />
+                        <option value="Indie" />
+                        <option value="Roguelike" />
+                        <option value="Horror" />
+                    </datalist>
+                </div>
             </div>
+        </div>
         <button class="btn btn-purple" id="searchBtn" type="submit">Search</button>
-
+        <button class="btn btn-purple" id="resetFiltersBtn" onclick="location.href='@Url.Action("Index","Collection")'">Reset</button>
 
     </form>
 
@@ -97,8 +97,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="rentModalLabel">Rent A Game</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        
                     </button>
                 </div>
                 <form asp-controller="Collection" asp-action="RentGame" method="post">
@@ -125,8 +125,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="deleteModalLabel">Delete Game</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        
                     </button>
                 </div>
                 <form asp-controller="Collection" asp-action="DeleteGame" method="post">

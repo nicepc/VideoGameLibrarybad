@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using VideoGameLibrary.Data;
 using VideoGameLibrary.Interfaces;
@@ -92,7 +93,7 @@ namespace VideoGameLibrary.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddGame(VideoGame game)
+        public async Task<IActionResult> AddGameAsync(VideoGame game)
         {
             if (ModelState.IsValid)
             {
@@ -105,6 +106,21 @@ namespace VideoGameLibrary.Controllers
                     }
                     game.ID = greatestIDValue + 1;
                 }
+
+                //Test if image is real. If it is not, use placeholder image
+                try
+                {
+                    using var client = new HttpClient();
+                    var result = await client.GetAsync(game.ImgSrc);
+                    //Console.WriteLine(result.Content.Headers.ContentType);
+                    if(!result.Content.Headers.ContentType.ToString().Contains("image")) game.ImgSrc = "/img/noImage.png";
+                } catch(Exception e)
+                {
+                    //Link does not lead anywhere
+                    //set default image
+                    game.ImgSrc = "/img/noImage.png";
+                }
+
                 dataAccessLayer.AddGame(game);
                 return Redirect("~/Collection/Index");
             }

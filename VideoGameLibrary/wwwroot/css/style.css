@@ -24,9 +24,13 @@ h2 {
 
 .err-msg {
     color:#fc584c; 
+    display:inline-block;
+    height:1em;
 }
-
-.form-select {
+.form-group {
+    padding:0.1em 0;
+}
+.form-group.spacing {
     margin-bottom:1em;
 }
 /*====================
@@ -70,12 +74,17 @@ footer {
       Collection
 ======================*/
 
-.videogame-collection {
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:space-between;
+.collection-body {
     max-width:950px;
     margin:0 auto;
+}
+
+.videogame-collection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 950px;
+    margin: 0 auto;
 }
 
 
@@ -195,10 +204,14 @@ footer {
        Buttons
 ======================*/
 
-
-#searchBtn {
+#resetFiltersBtn {
     display:block;
-    width:6em;
+    width:4.5em;
+    margin-left:0.75em;
+}
+#searchBtn {
+    display: block;
+    width: 5em;
 }
 
 #addGameBtn {

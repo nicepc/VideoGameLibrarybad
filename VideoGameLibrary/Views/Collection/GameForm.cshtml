@@ -13,11 +13,6 @@
             <span asp-validation-for="Title" class="err-msg"></span>
         </div>
         <div class="form-group">
-            <label for="ImgSrc">External Image Link:</label>
-            <input asp-for="ImgSrc" class="form-control" />
-            <span asp-validation-for="ImgSrc" class="err-msg"></span>
-        </div>
-        <div class="form-group">
             <label for="Year">Year:</label>
             <input asp-for="Year" class="form-control" />
             <span asp-validation-for="Year" class="err-msg"></span>
@@ -27,7 +22,11 @@
             <input asp-for="Genre" class="form-control" />
             <span asp-validation-for="Genre" class="err-msg"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group spacing">
+            <label for="ImgSrc">External Image Link:</label>
+            <input asp-for="ImgSrc" class="form-control" />
+        </div>
+        <div class="form-group spacing">
             <label for="EsrbRating">ESRB Rating:</label>
             <select asp-for="EsrbRating" class="form-select">
                 <option value="E">E</option>
@@ -37,7 +36,7 @@
                 <option value="RP">RP</option>
             </select>
         </div>
-        <div class="form-group">
+        <div class="form-group spacing">
             <label for="Platform">Platform:</label>
             <select asp-for="Platform" class="form-select">
                 <option value="Nintendo Switch">Nintendo Switch</option>

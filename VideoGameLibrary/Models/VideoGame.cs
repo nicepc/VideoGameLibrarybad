@@ -9,7 +9,6 @@ namespace VideoGameLibrary.Models
     public class VideoGame
     {
         public int ID { get; set; }
-        [Required(ErrorMessage = "Image source cannot be empty")]
         public string ImgSrc { get; set; }
 
         [Required(ErrorMessage = "Title cannot be empty")]

@@ -9,29 +9,48 @@ namespace VideoGameLibrary.Data
 {
     public class VideoGameDBDal : IDataAccessLayer
     {
-        public bool AddGame(VideoGame game)
+        private VideoGameDBContext _db;
+        public VideoGameDBDal(VideoGameDBContext db)
         {
-            throw new NotImplementedException();
+            this._db = db;
         }
 
-        public bool DeleteGame(int index)
+        public bool AddGame(VideoGame game)
         {
-            throw new NotImplementedException();
+            if (game != null)
+            {
+                _db.VideoGames.Add(game);
+                _db.SaveChanges();
+            }
+            return false;
+        }
+
+        public bool DeleteGame(int id)
+        {
+            var game = _db.VideoGames.Where(g => g.Id == id).FirstOrDefault();
+            _db.VideoGames.Remove(game);
+            _db.SaveChanges();
+            return true;
         }
 
         public IEnumerable<VideoGame> FilterCollection(string genre = null, string platform = null, string esrbRating = null)
         {
-            throw new NotImplementedException();
+            return _db.VideoGames.Where(g => filterStrings(g.Genre, genre) && filterStrings(g.Platform, platform) && filterStrings(g.EsrbRating, esrbRating)).Take(30);
+        }
+        private bool filterStrings(string gameString, string filterString)
+        {
+            if (String.IsNullOrEmpty(filterString)) return true;
+            return gameString.ToLower().Contains(filterString.ToLower());
         }
 
         public IEnumerable<VideoGame> GetCollection()
         {
-            throw new NotImplementedException();
+            return _db.VideoGames;
         }
 
         public IEnumerable<VideoGame> SearchForGames(string key)
         {
-            throw new NotImplementedException();
+            return _db.VideoGames.Where(g => g.Title.ToLower().Contains(key.ToLower()));
         }
     }
 }

@@ -12,7 +12,7 @@ namespace VideoGameLibrary.Interfaces
         IEnumerable<VideoGame> SearchForGames(string key);
         IEnumerable<VideoGame> FilterCollection(string genre = null, string platform = null, string esrbRating = null);
         Boolean AddGame(VideoGame game);
-        Boolean DeleteGame(int index);
+        Boolean DeleteGame(int id);
 
     }
 }

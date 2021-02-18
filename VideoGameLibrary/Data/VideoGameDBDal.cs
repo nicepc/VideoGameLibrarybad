@@ -35,22 +35,67 @@ namespace VideoGameLibrary.Data
 
         public IEnumerable<VideoGame> FilterCollection(string genre = null, string platform = null, string esrbRating = null)
         {
-            return _db.VideoGames.Where(g => filterStrings(g.Genre, genre) && filterStrings(g.Platform, platform) && filterStrings(g.EsrbRating, esrbRating)).Take(30);
+            string _genre = AdjustNullString(genre);
+            string _platform = AdjustNullString(platform);
+            string _esrbRating = AdjustNullString(esrbRating);
+
+            return _db.VideoGames.Where(g => g.Genre.Contains(_genre) && g.Platform.Contains(_platform) && g.EsrbRating.Contains(_esrbRating)).Take(30).ToList();
         }
-        private bool filterStrings(string gameString, string filterString)
+
+        private string AdjustNullString(string s)
         {
-            if (String.IsNullOrEmpty(filterString)) return true;
-            return gameString.ToLower().Contains(filterString.ToLower());
+            if (string.IsNullOrEmpty(s)) return "";
+            return s;
         }
 
         public IEnumerable<VideoGame> GetCollection()
         {
-            return _db.VideoGames;
+            return _db.VideoGames.ToList();
         }
 
         public IEnumerable<VideoGame> SearchForGames(string key)
         {
-            return _db.VideoGames.Where(g => g.Title.ToLower().Contains(key.ToLower()));
+            string _key = AdjustNullString(key);
+            return _db.VideoGames.Where(g => g.Title.ToLower().Contains(_key.ToLower())).ToList();
+        }
+
+        public void AddDefaultGames()
+        {
+            List<VideoGame> videoGameCollection = new List<VideoGame>
+            {
+                new VideoGame("/img/bioshock1.jpg", "Bioshock", "Action, Horror", 2007, "M", "Steam", "Ryan", new DateTime(2021, 1, 28)),
+                new VideoGame("/img/bioshock2.jpg", "Bioshock 2", "Action, Horror", 2010, "M", "Steam"),
+                new VideoGame("/img/bioshockInfinite.jpg", "Bioshock Infinite", "Action", 2013, "M", "Steam"),
+                new VideoGame("/img/littleNightmares1.jpg", "Little Nightmares", "Horror", 2017, "T", "Steam"),
+                new VideoGame("/img/littleNightmares2.jpg", "Little Nightmares II", "Horror", 2021, "T", "Steam"),
+                new VideoGame("/img/portal2.jpg", "Portal 2", "Puzzle, Platformer", 2011, "E", "Steam"),
+                new VideoGame("/img/superliminal.jpg", "Superliminal", "Puzzle", 2020, "E", "Steam"),
+                new VideoGame("/img/terraria.jpeg", "Terraria", "Action, Adventure", 2011, "T", "Steam"),
+                new VideoGame("/img/wizardOfLegend.jpg", "Wizard of Legend", "Roguelike, Indie", 2018, "E", "Steam")
+            };
+            foreach(VideoGame game in videoGameCollection)
+            {
+                AddGame(game);
+            }
+        }
+
+        public bool ReturnGame(int id)
+        {
+            VideoGame game = _db.VideoGames.Where(g => g.Id == id).FirstOrDefault();
+            game.LoanedTo = null;
+            _db.VideoGames.Update(game);
+            _db.SaveChanges();
+            return true;
+        }
+
+        public bool RentGame(int id, string loanedTo)
+        {
+            VideoGame game = _db.VideoGames.Where(g => g.Id == id).FirstOrDefault();
+            game.LoanedTo = loanedTo;
+            game.LoanDate = DateTime.Now;
+            _db.VideoGames.Update(game);
+            _db.SaveChanges();
+            return true;
         }
     }
 }

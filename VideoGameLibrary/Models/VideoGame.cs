@@ -22,7 +22,6 @@ namespace VideoGameLibrary.Models
         public string Genre { get; set; }
 
         [Required(ErrorMessage = "Year cannot be empty")]
-        [MaxLength(500)]
         public int? Year { get; set; }
 
         [Required(ErrorMessage = "Rating cannot be empty")]
@@ -39,6 +38,16 @@ namespace VideoGameLibrary.Models
 
 
         public VideoGame() {}
+        public VideoGame(string imgSrc, string title, string genre, int year, string esrbRating, string platform)
+        {
+            ImgSrc = imgSrc;
+            Title = title;
+            Genre = genre;
+            Year = year;
+            EsrbRating = esrbRating;
+            Platform = platform;
+
+        }
         public VideoGame(int id, string imgSrc, string title, string genre, int year, string esrbRating, string platform)
         {
             Id = id;
@@ -53,6 +62,17 @@ namespace VideoGameLibrary.Models
         public VideoGame(int id, string imgSrc, string title, string genre, int year, string esrbRating, string platform, string loanedTo, DateTime loanDate) 
         {
             Id = id;
+            ImgSrc = imgSrc;
+            Title = title;
+            Genre = genre;
+            Year = year;
+            EsrbRating = esrbRating;
+            Platform = platform;
+            LoanedTo = loanedTo;
+            LoanDate = loanDate;
+        }
+        public VideoGame(string imgSrc, string title, string genre, int year, string esrbRating, string platform, string loanedTo, DateTime loanDate)
+        {
             ImgSrc = imgSrc;
             Title = title;
             Genre = genre;

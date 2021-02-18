@@ -71,6 +71,16 @@ namespace VideoGameLibrary.Data
             return videoGameCollection;
         }
 
+        public bool RentGame(int id, string loanedTo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool ReturnGame(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<VideoGame> SearchForGames(string key)
         {
             if(key == null)

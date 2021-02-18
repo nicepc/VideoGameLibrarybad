@@ -18,6 +18,8 @@ namespace VideoGameLibrary.Controllers
         public CollectionController(IDataAccessLayer dal)
         {
             dataAccessLayer = dal;
+            //Uncomment and run to quickly add default games to db
+            //((VideoGameDBDal)dataAccessLayer).AddDefaultGames();
         }
 
         [HttpGet]
@@ -30,7 +32,9 @@ namespace VideoGameLibrary.Controllers
         {
             Console.WriteLine($"{titleFilterInput}, {btnradioRating}, {filterPlatform}, {filterGenre}");
             var filterCollection = dataAccessLayer.FilterCollection(filterGenre, filterPlatform, btnradioRating);
+            Console.WriteLine("FilterCollection: " + filterCollection.Count());
             var searchCollection = dataAccessLayer.SearchForGames(titleFilterInput);
+            Console.WriteLine("SearchCollection: " + searchCollection.Count());
             List<VideoGame> finalCollection = new List<VideoGame>();
             foreach(VideoGame searchResult in searchCollection)
             {
@@ -49,21 +53,16 @@ namespace VideoGameLibrary.Controllers
 
         public IActionResult ReturnGame(int gameID)
         {
-            VideoGame game = ((List<VideoGame>)dataAccessLayer.GetCollection()).Find(vg => vg.Id == gameID);
-            game.LoanedTo = null;
+            dataAccessLayer.ReturnGame(gameID);
             return Redirect("~/Collection/Index");
         }
 
         [HttpPost]
         public IActionResult RentGame()
         {
-            Console.WriteLine(Request.Form["gameid"]);
-            
             int gameID = int.Parse(Request.Form["gameid"]);
-            VideoGame game = ((List<VideoGame>)dataAccessLayer.GetCollection()).Find(vg => vg.Id == gameID);
             string loanedTo = Request.Form["renterName"].ToString();
-            game.LoanedTo = loanedTo;
-            game.LoanDate = DateTime.Now;
+            dataAccessLayer.RentGame(gameID, loanedTo);
 
             return Redirect("~/Collection/Index");
         }
@@ -72,17 +71,8 @@ namespace VideoGameLibrary.Controllers
         [HttpPost]
         public IActionResult DeleteGame()
         {
-            var gameList = (List<VideoGame>)dataAccessLayer.GetCollection();
             int gameID = int.Parse(Request.Form["gameid"]);
-            for (int i = 0; i < gameList.Count(); i++)
-            {
-                if(gameList[i].Id == gameID)
-                {
-                    dataAccessLayer.DeleteGame(i);
-                    //Console.WriteLine("Delete id " + gameList[i].Title + " at position " + i );
-                    break;
-                }
-            }
+            dataAccessLayer.DeleteGame(gameID);
             return Redirect("~/Collection/Index");
 
         }

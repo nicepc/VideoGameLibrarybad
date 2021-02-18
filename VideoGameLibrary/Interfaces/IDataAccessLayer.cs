@@ -13,6 +13,8 @@ namespace VideoGameLibrary.Interfaces
         IEnumerable<VideoGame> FilterCollection(string genre = null, string platform = null, string esrbRating = null);
         Boolean AddGame(VideoGame game);
         Boolean DeleteGame(int id);
+        bool ReturnGame(int id);
+        bool RentGame(int id, string loanedTo);
 
     }
 }

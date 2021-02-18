@@ -8,7 +8,7 @@ namespace VideoGameLibrary.Models
 {
     public class VideoGame
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string ImgSrc { get; set; }
 
         [Required(ErrorMessage = "Title cannot be empty")]
@@ -32,7 +32,7 @@ namespace VideoGameLibrary.Models
         public VideoGame() {}
         public VideoGame(int id, string imgSrc, string title, string genre, int year, string esrbRating, string platform)
         {
-            ID = id;
+            Id = id;
             ImgSrc = imgSrc;
             Title = title;
             Genre = genre;
@@ -43,7 +43,7 @@ namespace VideoGameLibrary.Models
         }
         public VideoGame(int id, string imgSrc, string title, string genre, int year, string esrbRating, string platform, string loanedTo, DateTime loanDate) 
         {
-            ID = id;
+            Id = id;
             ImgSrc = imgSrc;
             Title = title;
             Genre = genre;

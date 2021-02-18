@@ -49,7 +49,7 @@ namespace VideoGameLibrary.Controllers
 
         public IActionResult ReturnGame(int gameID)
         {
-            VideoGame game = ((List<VideoGame>)dataAccessLayer.GetCollection()).Find(vg => vg.ID == gameID);
+            VideoGame game = ((List<VideoGame>)dataAccessLayer.GetCollection()).Find(vg => vg.Id == gameID);
             game.LoanedTo = null;
             return Redirect("~/Collection/Index");
         }
@@ -60,7 +60,7 @@ namespace VideoGameLibrary.Controllers
             Console.WriteLine(Request.Form["gameid"]);
             
             int gameID = int.Parse(Request.Form["gameid"]);
-            VideoGame game = ((List<VideoGame>)dataAccessLayer.GetCollection()).Find(vg => vg.ID == gameID);
+            VideoGame game = ((List<VideoGame>)dataAccessLayer.GetCollection()).Find(vg => vg.Id == gameID);
             string loanedTo = Request.Form["renterName"].ToString();
             game.LoanedTo = loanedTo;
             game.LoanDate = DateTime.Now;
@@ -76,7 +76,7 @@ namespace VideoGameLibrary.Controllers
             int gameID = int.Parse(Request.Form["gameid"]);
             for (int i = 0; i < gameList.Count(); i++)
             {
-                if(gameList[i].ID == gameID)
+                if(gameList[i].Id == gameID)
                 {
                     dataAccessLayer.DeleteGame(i);
                     //Console.WriteLine("Delete id " + gameList[i].Title + " at position " + i );
@@ -97,14 +97,14 @@ namespace VideoGameLibrary.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (game.ID == -1)
+                if (game.Id == -1)
                 {
                     int greatestIDValue = 0;
                     foreach (var videoGame in dataAccessLayer.GetCollection())
                     {
-                        if (videoGame.ID > greatestIDValue) greatestIDValue = videoGame.ID;
+                        if (videoGame.Id > greatestIDValue) greatestIDValue = videoGame.Id;
                     }
-                    game.ID = greatestIDValue + 1;
+                    game.Id = greatestIDValue + 1;
                 }
 
                 //Test if image is real. If it is not, use placeholder image

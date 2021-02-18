@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,7 +27,11 @@ namespace VideoGameLibrary
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddTransient<IDataAccessLayer, MockVideoGameDB>();
+            services.AddDbContext<VideoGameDBContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("VideoGameDB"));
+            });
+            services.AddTransient<IDataAccessLayer, VideoGameDBDal>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

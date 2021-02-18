@@ -9,22 +9,31 @@ namespace VideoGameLibrary.Models
     public class VideoGame
     {
         public int Id { get; set; }
+
+        [MaxLength(500)]
         public string ImgSrc { get; set; }
 
         [Required(ErrorMessage = "Title cannot be empty")]
+        [MaxLength(500)]
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Genre cannot be empty")]
+        [MaxLength(500)]
         public string Genre { get; set; }
 
         [Required(ErrorMessage = "Year cannot be empty")]
+        [MaxLength(500)]
         public int? Year { get; set; }
 
         [Required(ErrorMessage = "Rating cannot be empty")]
+        [MaxLength(500)]
         public string EsrbRating { get; set; }
 
         [Required(ErrorMessage = "Platform cannot be empty")]
+        [MaxLength(500)]
         public string Platform { get; set; }
+
+        [MaxLength(500)]
         public string LoanedTo { get; set; }
         public DateTime LoanDate { get; set; }
 

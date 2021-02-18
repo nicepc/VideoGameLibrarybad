@@ -99,12 +99,7 @@ namespace VideoGameLibrary.Controllers
             {
                 if (game.Id == -1)
                 {
-                    int greatestIDValue = 0;
-                    foreach (var videoGame in dataAccessLayer.GetCollection())
-                    {
-                        if (videoGame.Id > greatestIDValue) greatestIDValue = videoGame.Id;
-                    }
-                    game.Id = greatestIDValue + 1;
+                    game.Id = null;
                 }
 
                 //Test if image is real. If it is not, use placeholder image

@@ -8,7 +8,7 @@ namespace VideoGameLibrary.Models
 {
     public class VideoGame
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [MaxLength(500)]
         public string ImgSrc { get; set; }

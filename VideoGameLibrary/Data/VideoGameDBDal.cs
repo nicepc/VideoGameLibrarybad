@@ -33,13 +33,13 @@ namespace VideoGameLibrary.Data
             return true;
         }
 
-        public IEnumerable<VideoGame> FilterCollection(string genre = null, string platform = null, string esrbRating = null)
+        public IEnumerable<VideoGame> FilterCollection(string ownerId, string genre = null, string platform = null, string esrbRating = null)
         {
             string _genre = AdjustNullString(genre);
             string _platform = AdjustNullString(platform);
             string _esrbRating = AdjustNullString(esrbRating);
 
-            return _db.VideoGames.Where(g => g.Genre.Contains(_genre) && g.Platform.Contains(_platform) && g.EsrbRating.Contains(_esrbRating)).Take(30).ToList();
+            return _db.VideoGames.Where(g => g.OwnerId == ownerId).Where(g => g.Genre.Contains(_genre) && g.Platform.Contains(_platform) && g.EsrbRating.Contains(_esrbRating)).Take(30).ToList();
         }
 
         private string AdjustNullString(string s)
@@ -48,15 +48,15 @@ namespace VideoGameLibrary.Data
             return s;
         }
 
-        public IEnumerable<VideoGame> GetCollection()
+        public IEnumerable<VideoGame> GetCollection(string ownerId)
         {
-            return _db.VideoGames.ToList();
+            return _db.VideoGames.Where(g => g.OwnerId == ownerId).ToList();
         }
 
-        public IEnumerable<VideoGame> SearchForGames(string key)
+        public IEnumerable<VideoGame> SearchForGames(string ownerId, string key)
         {
             string _key = AdjustNullString(key);
-            return _db.VideoGames.Where(g => g.Title.ToLower().Contains(_key.ToLower())).ToList();
+            return _db.VideoGames.Where(g => g.OwnerId == ownerId).Where(g => g.Title.ToLower().Contains(_key.ToLower())).ToList();
         }
 
         public void AddDefaultGames()

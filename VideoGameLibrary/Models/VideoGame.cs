@@ -9,6 +9,7 @@ namespace VideoGameLibrary.Models
     public class VideoGame
     {
         public int? Id { get; set; }
+        public string OwnerId { get; set; }
 
         [MaxLength(500)]
         public string ImgSrc { get; set; }
@@ -48,7 +49,7 @@ namespace VideoGameLibrary.Models
             Platform = platform;
 
         }
-        public VideoGame(int id, string imgSrc, string title, string genre, int year, string esrbRating, string platform)
+        public VideoGame(int id, string imgSrc, string title, string genre, int year, string esrbRating, string platform, string ownerId)
         {
             Id = id;
             ImgSrc = imgSrc;
@@ -57,9 +58,10 @@ namespace VideoGameLibrary.Models
             Year = year;
             EsrbRating = esrbRating;
             Platform = platform;
+            OwnerId = ownerId;
   
         }
-        public VideoGame(int id, string imgSrc, string title, string genre, int year, string esrbRating, string platform, string loanedTo, DateTime loanDate) 
+        public VideoGame(int id, string imgSrc, string title, string genre, int year, string esrbRating, string platform, string loanedTo, DateTime loanDate, string ownerId ) 
         {
             Id = id;
             ImgSrc = imgSrc;
@@ -70,6 +72,7 @@ namespace VideoGameLibrary.Models
             Platform = platform;
             LoanedTo = loanedTo;
             LoanDate = loanDate;
+            OwnerId = ownerId;
         }
         public VideoGame(string imgSrc, string title, string genre, int year, string esrbRating, string platform, string loanedTo, DateTime loanDate)
         {

@@ -28,15 +28,15 @@ namespace VideoGameLibrary.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View(dataAccessLayer.GetCollection());
+            return View(dataAccessLayer.GetCollection(User.FindFirstValue(ClaimTypes.NameIdentifier)));
         }
         [HttpPost]
         public IActionResult Index(string titleFilterInput, string btnradioRating, string filterPlatform, string filterGenre)
         {
             Console.WriteLine($"{titleFilterInput}, {btnradioRating}, {filterPlatform}, {filterGenre}");
-            var filterCollection = dataAccessLayer.FilterCollection(filterGenre, filterPlatform, btnradioRating);
+            var filterCollection = dataAccessLayer.FilterCollection(User.FindFirstValue(ClaimTypes.NameIdentifier), filterGenre, filterPlatform, btnradioRating);
             Console.WriteLine("FilterCollection: " + filterCollection.Count());
-            var searchCollection = dataAccessLayer.SearchForGames(titleFilterInput);
+            var searchCollection = dataAccessLayer.SearchForGames(User.FindFirstValue(ClaimTypes.NameIdentifier), titleFilterInput);
             Console.WriteLine("SearchCollection: " + searchCollection.Count());
             List<VideoGame> finalCollection = new List<VideoGame>();
             foreach(VideoGame searchResult in searchCollection)
@@ -63,8 +63,6 @@ namespace VideoGameLibrary.Controllers
         [HttpPost]
         public IActionResult RentGame()
         {
-            //GET USERS EMAIL
-            var userEmail = User.FindFirstValue(ClaimTypes.Email);
 
             int gameID = int.Parse(Request.Form["gameid"]);
             string loanedTo = Request.Form["renterName"].ToString();
@@ -97,6 +95,7 @@ namespace VideoGameLibrary.Controllers
                 {
                     game.Id = null;
                 }
+                game.OwnerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
                 //Test if image is real. If it is not, use placeholder image
                 try

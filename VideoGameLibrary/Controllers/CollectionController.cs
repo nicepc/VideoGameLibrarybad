@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using VideoGameLibrary.Data;
 using VideoGameLibrary.Interfaces;
@@ -62,6 +63,9 @@ namespace VideoGameLibrary.Controllers
         [HttpPost]
         public IActionResult RentGame()
         {
+            //GET USERS EMAIL
+            var userEmail = User.FindFirstValue(ClaimTypes.Email);
+
             int gameID = int.Parse(Request.Form["gameid"]);
             string loanedTo = Request.Form["renterName"].ToString();
             dataAccessLayer.RentGame(gameID, loanedTo);

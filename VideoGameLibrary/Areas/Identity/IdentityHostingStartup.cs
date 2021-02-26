@@ -33,7 +33,6 @@ namespace VideoGameLibrary.Areas.Identity
                     options.Password.RequireUppercase = false;
 
                     options.User.RequireUniqueEmail = true;
-                    options.User.AllowedUserNameCharacters = "a";
                 });
             });
         }

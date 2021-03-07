@@ -27,6 +27,7 @@ namespace VideoGameLibrary
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddRazorPages();
             services.AddDbContext<VideoGameDBContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("VideoGameDB"));

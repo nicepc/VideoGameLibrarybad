@@ -20,8 +20,11 @@ namespace VideoGameLibrary.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("IdentityContextConnection")));
 
-                services.AddDefaultIdentity<VideoGameLibraryUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<IdentityContext>();
+                services.AddIdentity<VideoGameLibraryUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
+                .AddDefaultTokenProviders()
+                .AddDefaultUI()
+                .AddEntityFrameworkStores<IdentityContext>();
 
                 services.Configure<IdentityOptions>(options =>
                 {

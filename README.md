@@ -3,3 +3,4 @@
 Adelwted files simple MVC ASP.NET application that allows users to view, rent and return video games.
 
 [software-grant-URNpdf.pdf](https://github.com/nicepc/VideoGameLibrarybad/files/10907218/software-grant-URNpdf.pdf)
+2003 copyright URN all rights reserved
